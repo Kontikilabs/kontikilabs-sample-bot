@@ -1,0 +1,13 @@
+{
+
+	"apiai_client_key": "013c13cffd8a4876b428bafe82ab94a0",
+
+	"get_started": {
+		"message1": "Hi 🙋 ",
+		"message2": "I'm your Demo Bot.",
+		"message3": "Here to show you Demo",
+		"message4": "Type `story` to view your added stories."
+	},
+
+	"fallback_message": "Oops! I never heard that before. I will get back to you soon."
+}

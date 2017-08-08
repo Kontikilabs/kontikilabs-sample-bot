@@ -1,0 +1,22 @@
+{
+	"backend_api_url": "http://52.201.240.49:3000/api",
+	"default_image_url": "https://www.w3schools.com/w3css/img_lights.jpg",
+	"botmetrics": "botmetrics_key",
+	"timer": 1500,
+	"facebook": {
+		"facebook_url": "https://graph.facebook.com/v2.7",
+		"verification_token": "<webhook_verification_token>",
+        "page_token": "<your_facebook_page_token>",
+        "page_id": "<your_facebook_page_id>"
+	},
+	"app": {
+		"platform": "facebook",
+		"bot": "demo-bot"
+	},
+	"platformCredentials": {
+		"username": "<platform_username>",
+        "password": "<platform_password>",
+        "organisationId": "<platform_organisation_Id>",
+        "botId": "<platform_bot_Id>"
+	}
+}
