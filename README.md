@@ -1,4 +1,4 @@
-#Bot Building with [Kon-Tiki Labs](http://kontikilabs.com)
+# Bot Building with [Kon-Tiki Labs](http://kontikilabs.com)
 *****
 
 This is a sample Messenger bot, which when paired with our [KTL platform](http://app.kontikilabs.com) will automatically conduct conversations 
@@ -6,28 +6,28 @@ with the bot users.
 
 Table of Contents
     
-* [Setup the Bot](#markdown-header-setup-the-bot)
-      - [Prerequisites](#markdown-header-prerequisites)
-      - [Bot linking with the KTL platform](#markdown-header-bot-linking-with-the-ktl-platform)
-      - [The Facebook Requirements](#markdown-header-the-facebook-requirements)
-        * [Your Bot Page](#markdown-header-your-bot-page)
-        * [Facebook Developer Account](#markdown-header-facebook-developer-account)
-        * [Start your project](#markdown-header-start-your-project)
-        * [Tunneling the server](#markdown-header-tunneling-the-server)
-      - [Testing the Sample Bot](#markdown-header-testing-the-sample-bot)
-      - [Adding features to your Bot](#markdown-header-adding-features-to-your-bot)
-        * [Bot Greeting Text](#markdown-header-bot-greeting-text)
-        * [Bot Get Started Button](#markdown-header-bot-get-started-button)
-        * [Bot Persistent Menu](#markdown-header-bot-persistent-menu)
-        * [Bot Domin Whitelist Menu](#markdown-header-bot-domain-whiltelist-menu)
-      - [To Start the project](#markdown-header-to-start-the-project)
-* [Integrate customised conversational experience](#markdown-header-integrate-customised-conversational-experience)
-      - [Build conversational interface for your bot](#markdown-header-build-conversational-interface-for-your-bot)
-      - [Build responses to user’s request](#markdown-header-build-responses-to-users-request)
-      - [Response for your business logic](#markdown-header-response-for-your-business-logic)
-        * [Send Text](#markdown-header-send-text)
-        * [Send Genric Template](#markdown-header-send-genric-template)
-        * [Send Typing Action](#markdown-header-send-typing-action)
+* [Setup the Bot](#setup-the-bot)
+      - [Prerequisites](#prerequisites)
+      - [Bot linking with the KTL platform](#bot-linking-with-the-ktl-platform)
+      - [The Facebook Requirements](#the-facebook-requirements)
+        * [Your Bot Page](#your-bot-page)
+        * [Facebook Developer Account](#facebook-developer-account)
+        * [Start your project](#start-your-project)
+        * [Tunneling the server](#tunneling-the-server)
+      - [Testing the Sample Bot](#testing-the-sample-bot)
+      - [Adding features to your Bot](#adding-features-to-your-bot)
+        * [Bot Greeting Text](#bot-greeting-text)
+        * [Bot Get Started Button](#bot-get-started-button)
+        * [Bot Persistent Menu](#bot-persistent-menu)
+        * [Bot Domin Whitelist Menu](#bot-domain-whiltelist-menu)
+      - [To Start the project](#to-start-the-project)
+* [Integrate customised conversational experience](#integrate-customised-conversational-experience)
+      - [Build conversational interface for your bot](#build-conversational-interface-for-your-bot)
+      - [Build responses to user’s request](#build-responses-to-users-request)
+      - [Response for your business logic](#response-for-your-business-logic)
+        * [Send Text](#send-text)
+        * [Send Genric Template](#send-genric-template)
+        * [Send Typing Action](#send-typing-action)
       
 ## Setup the Bot
 *****
