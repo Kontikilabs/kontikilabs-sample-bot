@@ -6,8 +6,8 @@
 	"facebook": {
 		"facebook_url": "https://graph.facebook.com/v2.7",
 		"verification_token": "<webhook_verification_token>",
-        "page_token": "<your_facebook_page_token>",
-        "page_id": "<your_facebook_page_id>"
+		"page_token": "<your_facebook_page_token>",
+		"page_id": "<your_facebook_page_id>"
 	},
 	"app": {
 		"platform": "facebook",
@@ -15,8 +15,8 @@
 	},
 	"platformCredentials": {
 		"username": "<platform_username>",
-        "password": "<platform_password>",
-        "organisationId": "<platform_organisation_Id>",
-        "botId": "<platform_bot_Id>"
+		"password": "<platform_password>",
+		"organisationId": "<platform_organisation_Id>",
+		"botId": "<platform_bot_Id>"
 	}
 }

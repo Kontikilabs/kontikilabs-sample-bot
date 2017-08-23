@@ -1,90 +1,282 @@
-Required packages
+#Bot Building with [Kon-Tiki Labs](http://kontikilabs.com)
+*****
 
-	*	NodeJs
-	*	npm
-	*	ngrok (https://ngrok.com/download)
+This is a sample Messenger bot, which when paired with our [KTL platform](http://app.kontikilabs.com) will automatically conduct conversations 
+with the bot users.
 
-To build the project you need to run below command:
+Table of Contents
+    
+* [Setup the Bot](#markdown-header-setup-the-bot)
+      - [Prerequisites](#markdown-header-prerequisites)
+      - [Bot linking with the KTL platform](#markdown-header-bot-linking-with-the-ktl-platform)
+      - [The Facebook Requirements](#markdown-header-the-facebook-requirements)
+        * [Your Bot Page](#markdown-header-your-bot-page)
+        * [Facebook Developer Account](#markdown-header-facebook-developer-account)
+        * [Start your project](#markdown-header-start-your-project)
+        * [Tunneling the server](#markdown-header-tunneling-the-server)
+      - [Testing the Sample Bot](#markdown-header-testing-the-sample-bot)
+      - [Adding features to your Bot](#markdown-header-adding-features-to-your-bot)
+        * [Bot Greeting Text](#markdown-header-bot-greeting-text)
+        * [Bot Get Started Button](#markdown-header-bot-get-started-button)
+        * [Bot Persistent Menu](#markdown-header-bot-persistent-menu)
+        * [Bot Domin Whitelist Menu](#markdown-header-bot-domain-whiltelist-menu)
+      - [To Start the project](#markdown-header-to-start-the-project)
+* [Integrate customised conversational experience](#markdown-header-integrate-customised-conversational-experience)
+      - [Build conversational interface for your bot](#markdown-header-build-conversational-interface-for-your-bot)
+      - [Build responses to user’s request](#markdown-header-build-responses-to-users-request)
+      - [Response for your business logic](#markdown-header-response-for-your-business-logic)
+        * [Send Text](#markdown-header-send-text)
+        * [Send Genric Template](#markdown-header-send-genric-template)
+        * [Send Typing Action](#markdown-header-send-typing-action)
+      
+## Setup the Bot
+*****
 
-	*	npm install
+### Prerequisites
 
-To configure your project:
+Use the command below to clone the repository:
+```
+ git clone https://github.com/Kontikilabs/kontikilabs-sample-bot.git
+```
 
-	*	Create your organisation/account from http://app.kontikilabs.com, and add the credentials i.e 'username' and 'password' into the kontikilabs-sample-bot/config.json file.
+To rename the project with the name of your choice and to remove the GIT reference use the below commands:
 
-	*	Next, login to your organisation to create your bot by clicking on 'Add new bot'.
+```
+ mv kontikilabs-sample-bot your-folder-name
+ cd your-folder-name/
+ sudo rm -rf .git
+```
 
-	* 	Once your bot is created, click on it to enter inside your bot dashboard.
+Once you have cloned the sample project, you require the following 3 packages:
 
-	*	Click on the 'setting icon' present in the KTL platform header to copy your 'OrganisationId', 'BotId' and the 'Bot Name' into the config.json file.
-		The bot name in the config.json file should be without any space or dot. for eg, if you name the bot as 'Demo Bot' in the KTL Platform, rename it as demo-bot in the file.
+- NodeJs
+- npm
+- [ngrok](https://ngrok.com/download)
 
-	*	Create a Facebook page(https://www.facebook.com/pages/create) for your users to interact with the bot. Once the page is created, copy the 'Page Id' from the 'About' tab and paste it into the config.json file.
+### Bot linking with the KTL platform
 
-	*   Create your Facebook developer account from : https://developers.facebook.com and proceed further by creating an App.
+For building and managing the bot content, start with creating an **organisation/account** on our user friendly 
+[KTL platform](http://app.kontikilabs.com).
 
-	*	Click 'Add Product' from the left navigation bar on your developer account.
+In order to link the KTL platform with the bot, add the platform credentials i.e the *'username' and 'password'* to the 
+[config.json](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/config.json) file.
 
-	*	Select 'Set Up' option from the 'Messenger' box to generate the page token.
+On successful login to the platform you will be redirected to a page which will allow you to **Add New Bot**. 
+Once the bot is created you will be able to enter your bot dashboard, by clicking on the bot container.
 
-	*	Under the 'Token Generation' subheading, select your page from the drop-down menu and continue to see the generated token. Copy this token into the config.json file.
+KTL platform allows you to have multiple bots in a single organisation. So, how does the KTL plaform content gets link to the sample bot?
 
-	*	In the config.json file add a 'verification_token' of your choice and save the file.
+Our sample bot is powered to handle this, you just need to add the **botId** of the desired bot in the *config.json* file, and the linking is 
+done.
 
-	*	Next, rename the file in lib/contents/demo-bot.json with <botname>.json, the <botname> should match with the name in the config.json file.
+To get your **organisationId**, **botId** and the **bot name**, click on the 'setting icon' present in the KTL platform header.
 
-	*	Next, start your project with $ DEBUG=kontikilabs-sample-bot:* NODE_ENV=development npm start
+*The bot name in the config.json file should be without any space or dot. for example, if you name the bot as 'Demo Bot' in the KTL Platform, 
+rename it as demo-bot in the config.json file.*
 
-	*   Now, go to the folder where your ngrok is, and from the terminal start ngrok for tunneling the server with the command:
-		$ ./ngrok http -region eu 5000
+Your config.json file code will look like: 
+```
+"app": {
+  "platform": "facebook",
+  "bot": "<bot-name>"
+},
 
-	*	Pick the 'Forwarding URL' which will be like : https://112be1ed.eu.ngrok.io and append /webhook at the end, thus forming the result Callback URL like :
-		https://112be1ed.eu.ngrok.io/webhook
+"platformCredentials": {
+   "username": "<platform_username>",
+   "password": "<platform_password>",
+   "organisationId": "<platform_organisation_Id>",
+   "botId": "<platform_bot_Id>"
+}
+```
+### The Facebook Requirements
 
-	*   Now, go to the 'Messenger Product' option in your Facebook App and click on the 'Setup Webhooks' option, available just below the 'Token Generation' tab.
+#### Your Bot Page
+Your bot will require a Facebook page via which the users will interact. [Create your Facebook page](https://www.facebook.com/pages/create)
+and get the **Page Id** from the **About** tab. Pass this id in the ```page_id``` field of the *config.json* file.
 
-	*	Paste the Callback URL in the text box.
+#### Facebook Developer Account
+The instructions below cover setting up your Facebook developer account:
 
-	*	Next, copy the 'Verify Token' that you added in the config.json file in the field 'verification_token'.
+1.  [Register for a developer account at Facebook](https://developers.facebook.com). 
+2.  Create an App from your developer account.
+3.  Click **Add Product** from the left navigation bar on your developer account.
+4.  Select **Set Up** option from the *Messenger* box to generate the page token.
+5.  Under the **Token Generation** subheading, select your page from the drop-down menu and continue to see the generated token. Pass this token in the ```page_token``` field of the *config.json* file.
+6.  Next, in the *config.json file* add a **verification_token** of your choice and save the file.
+7.  Next, rename the file [demo-bot.json](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/lib/contents) with *<botname>.json*. The *botname* should match the name in the *config.json* file.
+   
+Your code in the *config.json* file should look like:
 
-	*	Next, select the option 'messages' and 'messaging_postbacks' from the list of check buttons and click on 'Verify and Save' button.
+```
+"facebook": {
+  "facebook_url": "https://graph.facebook.com/v2.7",
+  "verification_token": "<webhook_verification_token>",
+  "page_token": "<your_facebook_page_token>",
+  "page_id": "<your_facebook_page_id>"
+}
+```
+####  Start your project
+Once the above setup is done, start your project from the terminal with the command 
 
-	*	Facebook signals your webhook integration with 'Complete'. Next, from the same 'webhooks' section select your page via the drop-down and click on the 'Subscribe' button.
+```DEBUG=kontikilabs-sample-bot:* NODE_ENV=development npm start```
 
-	*	Go to your Facebook page, and click on the 'Add a Button' option.
+If you want to change *kontikilabs-sample-bot* in the above command, then you need to change the below code snippet
 
-	*	Select 'Get in Touch' option from the list, and proceed further by opting 'Send Message'.
+```var debug = require('debug')('kontikilabs-sample-bot:server')``` 
 
-	*	Click on 'Add Button' to save the settings.
+in the [www file](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/bin/www)
 
-	*	Hover on the 'Send Message' button to select 'Test Button', and you can start the conversation.
+####  Tunneling the server
 
-	* 	Bot Greeting Text :	Hit the URL below to customize your bot by appending a greeting text.
-					Add   :	http://localhost:5000/setgreetingtext
+Once you have started your project and downloaded ngrok, proceed by following the instructions below:
 
-					Remove:	http://localhost:5000/removegreetingtext
+1.  Go to the folder where your ngrok resides, and from the terminal start ngrok for tunneling the server with the command:
+    
+    ```./ngrok http -region eu 5000```
+    
+2.  Pick the **Forwarding URL** which will look like : *https://112be1ed.eu.ngrok.io*.
+    To the *Forwarding URL* append */webhook* at the end, thus forming the result Callback URL like :
+    **https://112be1ed.eu.ngrok.io/webhook**
+3.  Now, go to the *Messenger Product* option in your Facebook App and click on the **Setup Webhooks** option, available just below the *Token Generation* tab.
+4.  Add this *Callback URL* in text box provided.
+5.  Next, copy the **Verify Token** that you added in the ```verification_token``` field of the *config.json* file.
+6.  Next, select the **messages** and **messaging_postbacks** options from the list of check boxes and click on *Verify and Save* button.
+7.  Facebook signals your webhook integration with 'Complete'. Next, from the same *webhooks* section select your page via the drop-down and click on the *Subscribe* button.
 
-	* 	Bot Get Started Button : Add a 'get started' button to your bot to make it more user friendly.
-					Add   :	http://localhost:5000/setgetstartedbutton
+###  Testing the Sample Bot
+Once the entire setup is done you can test the bot from your Facebook page by following the steps below: 
 
-					Remove:	http://localhost:5000/removegetstartedbutton
+1.  Go to your Facebook page, and click on the 'Add a Button' option.
+2.  Select 'Get in Touch' option from the list, and proceed further by opting 'Send Message'.
+3.  Click on 'Add Button' to save the settings.
+4.  Hover on the 'Send Message' button to select 'Test Button', and you can start the conversation.
 
-    * 	Bot Persistent Menu : Let your users access your website from the bot
-					Add   :	http://localhost:5000/setpersistentmenu : To disable the input area change "composer_input_disabled" to true in the threadSettings.js file, present in the routes folder.
+###  Adding features to your Bot
+Our Sample Bot holds the ability to allow user customization and add other Facebook features to increase your customers interaction level. 
+For your easy we provide direct URL's which when hit on the browser **Adds** or **Removes** the asked feature. Check the doc below for all such
+features:
 
-					Remove:	http://localhost:5000/removepersistentmenu
+####  Bot Greeting Text
+Hit the URL below to welcome your bot users with a greeting text.
+ 
+Action        | URL
+------------- | -------------
+Add           | http://localhost:5000/setgreetingtext
+Remove        | http://localhost:5000/removegreetingtext
 
-    * 	Bot Domin Whitelist Menu :
-					Add   :	http://localhost:5000/setdomainwhitelist
+####  Bot Get Started Button
+Hit the URL below to add a 'get started' button to your bot to make it more user friendly.
+ 
+Action        | URL
+------------- | -------------
+Add           | http://localhost:5000/setgetstartedbutton
+Remove        | http://localhost:5000/removegetstartedbutton
 
-					Remove:	http://localhost:5000/removedomainwhitelist
+####  Bot Persistent Menu
+Let your users access your website from the bot. To disable the input area change ```composer_input_disabled``` to *true* in the 
+[threadSettings.js](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/routes/threadSettings.js) file.
 
-To Start the project
+Action        | URL
+------------- | -------------
+Add           | http://localhost:5000/setpersistentmenu
+Remove        | http://localhost:5000/removepersistentmenu
 
-	For Development
+####  Bot Domin Whitelist Menu
+ 
+Action        | URL
+------------- | -------------
+Add           | http://localhost:5000/setdomainwhitelist
+Remove        | http://localhost:5000/removedomainwhitelist
 
-	*	DEBUG=kontikilabs-sample-bot:* NODE_ENV=development npm start
 
-	For Production
+### To Start the project
 
-	*	DEBUG=kontikilabs-sample-bot:* NODE_ENV=production npm start
+Environment   | Command
+------------- | -------------
+Development   | DEBUG=kontikilabs-sample-bot:* NODE_ENV=development npm start
+Production    | DEBUG=kontikilabs-sample-bot:* NODE_ENV=production npm start
+
+This completes the entire bot setup. Check the document below to see how you can enhace your bot.
+
+##  Integrate customised conversational experience
+*****
+
+Artificial intelligence is the backbone of any chatbot. Each and every bot is judged by the amount of Machine Learning and the Natural 
+Language Processing it holds.
+
+An intelligent bot can say things and reply to what is demanded. Basically, they can talk to your users.
+
+To make your chatbot appear intelligent, Kon-Tiki Labs integrated [API.AI](https://api.ai) into the sample bot, but the scope for making the 
+bot more intelligent should never die. 
+
+In the document below we explain how you can enhance your bot to increase its intelligence level.
+
+###  Build conversational interface for your bot 
+Once you have configured the entire setup, you can get started by creating your account in [API.AI](https://console.api.ai/api-client/#/login).
+
+After you have registered for the API.AI, proceed further by creating an **agent**, which will allow your bot to transform natural user requests
+into actionable data. 
+
+Once your agent is successfully created, you will be able to view your **Client access token** from the agent’s setting screen. 
+Add this to your **kontikilabs-sample-bot** project by passing it in the ```apiai_client_key``` field of the 
+[botname.json](https://github.com/Kontikilabs/kontikilabs-sample-bot/tree/master/lib/contents) file .
+
+Your code block will be like:
+```
+{
+	"apiai_client_key": "<my_apiai_client_access_token>",
+
+}
+```
+###  Build responses to user’s request
+How will your bot handle user’s query? API.AI manages this with **intents**, which act as a mapping between what a user says and what action 
+should be taken by your bot.
+
+Proceed by adding new intents to your bot.
+The trick here is that the name of the file you create inside the *intents folder* should be same as the *intent name* you create in API.AI. 
+
+*For example, my **greeting** intent in the api.ai will trigger the exact name of the script file i.e 
+[**greeting.js**](https://github.com/Kontikilabs/kontikilabs-sample-bot/tree/master/lib/intents/greeting.js) in your project.*
+
+The code below covers setting up greeting scenarios like ‘hi’, ‘hello’ etc. 
+
+```
+var LOCALSTORAGE = require('../datasources/localStorage');
+
+exports.intent = function(input JSON, object, intent Response) {
+var localStorage Data = {
+		senderId: inputJSON.senderId,
+		topic: 'GREETING',
+		text: inputJSON.text,
+		platform: inputJSON.platform,
+		bot: inputJSON.bot
+	};
+	LOCALSTORAGE.SaveUserConversation(localStorageData, function(localMemorycb) {
+		/*write your business logic here*/
+	});
+};
+```
+
+###  Response for your business logic
+
+You can include the following bussiness logic in the code above :
+
+#####  Send Text
+
+```
+SENDRESPOSNE.SendText(inputJSON, 'your_text_here', function() {
+});
+```
+#####  Send Genric Template
+
+```
+SENDRESPOSNE.SendGenericTemplate(inputJSON, 'your_generic_template_here', function() {
+});
+```
+
+#####  Send Typing Action
+
+```
+SENDRESPOSNE.SendTypingAction(inputJSON, 'your_action_here', function() {
+});
+```
