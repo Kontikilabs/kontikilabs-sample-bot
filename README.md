@@ -18,7 +18,7 @@ with the bot users.
       - [Bot Greeting Text](#bot-greeting-text)
       - [Bot Get Started Button](#bot-get-started-button)
       - [Bot Persistent Menu](#bot-persistent-menu)
-      - [Bot Domain Whitelist Menu](#bot-domain-whiltelist-menu)
+      - [Bot Domain Whitelist Menu](#bot-domain-whitelist-menu)
     - [To Start the project](#to-start-the-project)
   - [Integrate customised conversational experience](#integrate-customised-conversational-experience)
     - [Build conversational interface for your bot](#build-conversational-interface-for-your-bot)
