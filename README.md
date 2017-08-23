@@ -18,7 +18,7 @@ with the bot users.
       - [Bot Greeting Text](#bot-greeting-text)
       - [Bot Get Started Button](#bot-get-started-button)
       - [Bot Persistent Menu](#bot-persistent-menu)
-      - [Bot Domin Whitelist Menu](#bot-domain-whiltelist-menu)
+      - [Bot Domain Whitelist Menu](#bot-domain-whiltelist-menu)
     - [To Start the project](#to-start-the-project)
   - [Integrate customised conversational experience](#integrate-customised-conversational-experience)
     - [Build conversational interface for your bot](#build-conversational-interface-for-your-bot)
@@ -179,7 +179,7 @@ Action        | URL
 Add           | http://localhost:5000/setpersistentmenu
 Remove        | http://localhost:5000/removepersistentmenu
 
-####  Bot Domin Whitelist Menu
+####  Bot Domain Whitelist Menu
  
 Action        | URL
 ------------- | -------------
