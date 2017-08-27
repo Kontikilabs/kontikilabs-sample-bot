@@ -101,7 +101,7 @@ The instructions below cover setting up your Facebook developer account:
 4.  Select **Set Up** option from the *Messenger* box to generate the page token.
 5.  Under the **Token Generation** subheading, select your page from the drop-down menu and continue to see the generated token. Pass this token in the ```page_token``` field of the *config.json* file.
 6.  Next, in the *config.json file* add a **verification_token** of your choice and save the file.
-7.  Next, rename the file [demo-bot.json](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/lib/contents) with *<botname>.json*. The *botname* should match the name in the *config.json* file.
+7.  Next, rename the file [demo-bot.json](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/lib/contents) with *botname.json*. The *botname* should match the name in the *config.json* file.
    
 Your code in the *config.json* file should look like:
 
