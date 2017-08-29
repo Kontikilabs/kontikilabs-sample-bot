@@ -4,31 +4,31 @@ This is a sample Messenger bot, which when paired with our [KTL platform](http:/
 with the bot users.
 
 ## Table of Contents
-    
-  - [Setup the Bot](#setup-the-bot)
+
+  - [Set up the Bot](#setup-the-bot)
     - [Prerequisites](#prerequisites)
-    - [Bot linking with the KTL platform](#bot-linking-with-the-ktl-platform)
+    - [Bot Linking with the KTL Platform](#bot-linking-with-the-ktl-platform)
     - [The Facebook Requirements](#the-facebook-requirements)
       - [Your Bot Page](#your-bot-page)
       - [Facebook Developer Account](#facebook-developer-account)
-      - [Start your project](#start-your-project)
-      - [Tunneling the server](#tunneling-the-server)
+      - [Start your Project](#start-your-project)
+      - [Tunneling the Server](#tunneling-the-server)
     - [Testing the Sample Bot](#testing-the-sample-bot)
-    - [Adding features to your Bot](#adding-features-to-your-bot)
+    - [Adding Features to your Bot](#adding-features-to-your-bot)
       - [Bot Greeting Text](#bot-greeting-text)
       - [Bot Get Started Button](#bot-get-started-button)
       - [Bot Persistent Menu](#bot-persistent-menu)
       - [Bot Domain Whitelist Menu](#bot-domain-whitelist-menu)
-    - [To Start the project](#to-start-the-project)
-  - [Integrate customised conversational experience](#integrate-customised-conversational-experience)
-    - [Build conversational interface for your bot](#build-conversational-interface-for-your-bot)
-    - [Build responses to user’s request](#build-responses-to-users-request)
-    - [Response for your business logic](#response-for-your-business-logic)
+    - [To Start the Project](#to-start-the-project)
+  - [Integrate Customised Conversational Experience](#integrate-customised-conversational-experience)
+    - [Build Conversational Interface for your Bot](#build-conversational-interface-for-your-bot)
+    - [Build Responses to User’s Request](#build-responses-to-users-request)
+    - [Response for your Business Logic](#response-for-your-business-logic)
       - [Send Text](#send-text)
-      - [Send Genric Template](#send-genric-template)
+      - [Send Generic Template](#send-generic-template)
       - [Send Typing Action](#send-typing-action)
       
-## Setup the Bot
+## Set up the Bot
 
 ### Prerequisites
 
@@ -37,7 +37,7 @@ Use the command below to clone the repository:
  git clone https://github.com/Kontikilabs/kontikilabs-sample-bot.git
 ```
 
-To rename the project with the name of your choice and to remove the GIT reference use the below commands:
+To rename the project with the name of your choice and to remove the GIT reference use the following commands:
 
 ```
  mv kontikilabs-sample-bot your-folder-name
@@ -51,25 +51,25 @@ Once you have cloned the sample project, you require the following 3 packages:
 - npm
 - [ngrok](https://ngrok.com/download)
 
-### Bot linking with the KTL platform
+### Bot Linking with the KTL Platform
 
-For building and managing the bot content, start with creating an **organisation/account** on our user friendly 
+For building and managing the bot content, start with creating an **organisation/account** on our user-friendly 
 [KTL platform](http://app.kontikilabs.com).
 
 In order to link the KTL platform with the bot, add the platform credentials i.e the *'username' and 'password'* to the 
 [config.json](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/config.json) file.
 
 On successful login to the platform you will be redirected to a page which will allow you to **Add New Bot**. 
-Once the bot is created you will be able to enter your bot dashboard, by clicking on the bot container.
+Once the bot is created you will be able to enter your bot dashboard.
 
-KTL platform allows you to have multiple bots in a single organisation. So, how does the KTL plaform content gets link to the sample bot?
+KTL platform allows you to have multiple bots in a single organisation. So, how does the KTL platform content get linked to the sample bot?
 
 Our sample bot is powered to handle this, you just need to add the **botId** of the desired bot in the *config.json* file, and the linking is 
 done.
 
-To get your **organisationId**, **botId** and the **bot name**, click on the 'setting icon' present in the KTL platform header.
+To get your **organisationId**, **botId** and the **bot name**, click on the 'setting icon' in the KTL platform header.
 
-*The bot name in the config.json file should be without any space or dot. for example, if you name the bot as 'Demo Bot' in the KTL Platform, 
+*The bot name in the config.json file should be without any space or dot. For example, if you name the bot as 'Demo Bot' in the KTL Platform, 
 rename it as demo-bot in the config.json file.*
 
 Your config.json file code will look like: 
@@ -89,13 +89,13 @@ Your config.json file code will look like:
 ### The Facebook Requirements
 
 #### Your Bot Page
-Your bot will require a Facebook page via which the users will interact. [Create your Facebook page](https://www.facebook.com/pages/create)
+Your bot will require a Facebook page through which the users will interact. [Create your Facebook page](https://www.facebook.com/pages/create)
 and get the **Page Id** from the **About** tab. Pass this id in the ```page_id``` field of the *config.json* file.
 
 #### Facebook Developer Account
 The instructions below cover setting up your Facebook developer account:
 
-1.  [Register for a developer account at Facebook](https://developers.facebook.com). 
+1.  [Register for a developer account on Facebook](https://developers.facebook.com). 
 2.  Create an App from your developer account.
 3.  Click **Add Product** from the left navigation bar on your developer account.
 4.  Select **Set Up** option from the *Messenger* box to generate the page token.
@@ -113,18 +113,18 @@ Your code in the *config.json* file should look like:
   "page_id": "<your_facebook_page_id>"
 }
 ```
-####  Start your project
-Once the above setup is done, start your project from the terminal with the command 
+####  Start your Project
+Once the above setup is done, start your project from the terminal with the command..
 
 ```DEBUG=kontikilabs-sample-bot:* NODE_ENV=development npm start```
 
-If you want to change *kontikilabs-sample-bot* in the above command, then you need to change the below code snippet
+If you want to change *kontikilabs-sample-bot* in the above command, then you need to change the below code snippet..
 
 ```var debug = require('debug')('kontikilabs-sample-bot:server')``` 
 
 in the [www file](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/bin/www)
 
-####  Tunneling the server
+####  Tunneling the Server
 
 Once you have started your project and downloaded ngrok, proceed by following the instructions below:
 
@@ -145,14 +145,13 @@ Once you have started your project and downloaded ngrok, proceed by following th
 Once the entire setup is done you can test the bot from your Facebook page by following the steps below: 
 
 1.  Go to your Facebook page, and click on the 'Add a Button' option.
-2.  Select 'Get in Touch' option from the list, and proceed further by opting 'Send Message'.
-3.  Click on 'Add Button' to save the settings.
-4.  Hover on the 'Send Message' button to select 'Test Button', and you can start the conversation.
+2.  Select the 'Get in Touch' option from the list, and proceed further by opting 'Send Message'.
+3.  Click on the 'Add Button' to save the settings.
+4.  Hover on the 'Send Message' button to select the 'Test Button', and you can start the conversation.
 
-###  Adding features to your Bot
-Our Sample Bot holds the ability to allow user customization and add other Facebook features to increase your customers interaction level. 
-For your easy we provide direct URL's which when hit on the browser **Adds** or **Removes** the asked feature. Check the doc below for all such
-features:
+###  Adding Features to your Bot
+Our Sample Bot holds the ability to allow user customization and add other Facebook features to increase your customers' interaction level. 
+For your ease we provide direct URLs which when hit on the browser **Adds** or **Removes** the feature. Check the doc below for all such features:
 
 ####  Bot Greeting Text
 Hit the URL below to welcome your bot users with a greeting text.
@@ -163,7 +162,7 @@ Add           | http://localhost:5000/setgreetingtext
 Remove        | http://localhost:5000/removegreetingtext
 
 ####  Bot Get Started Button
-Hit the URL below to add a 'get started' button to your bot to make it more user friendly.
+Hit the URL below to add a 'get started' button to your bot to make it more user-friendly.
  
 Action        | URL
 ------------- | -------------
@@ -187,29 +186,28 @@ Add           | http://localhost:5000/setdomainwhitelist
 Remove        | http://localhost:5000/removedomainwhitelist
 
 
-### To Start the project
+### To Start the Project
 
 Environment   | Command
 ------------- | -------------
 Development   | DEBUG=kontikilabs-sample-bot:* NODE_ENV=development npm start
 Production    | DEBUG=kontikilabs-sample-bot:* NODE_ENV=production npm start
 
-This completes the entire bot setup. Check the document below to see how you can enhace your bot.
+This completes the entire bot setup. Check the document below to see how you can enhance your bot.
 
-##  Integrate customised conversational experience
-*****
+##  Integrate Customised Conversational Experience
 
 Artificial intelligence is the backbone of any chatbot. Each and every bot is judged by the amount of Machine Learning and the Natural 
 Language Processing it holds.
 
-An intelligent bot can say things and reply to what is demanded. Basically, they can talk to your users.
+An intelligent bot can say things and reply to what is demanded. Basically, it can talk to your users.
 
-To make your chatbot appear intelligent, Kon-Tiki Labs integrated [API.AI](https://api.ai) into the sample bot, but the scope for making the 
+To make your chatbot appear intelligent, Kon-Tiki Labs has integrated [API.AI](https://api.ai) into the sample bot, but the scope for making the 
 bot more intelligent should never die. 
 
 In the document below we explain how you can enhance your bot to increase its intelligence level.
 
-###  Build conversational interface for your bot 
+###  Build Conversational Interface for your Bot
 Once you have configured the entire setup, you can get started by creating your account in [API.AI](https://console.api.ai/api-client/#/login).
 
 After you have registered for the API.AI, proceed further by creating an **agent**, which will allow your bot to transform natural user requests
@@ -226,8 +224,8 @@ Your code block will be like:
 
 }
 ```
-###  Build responses to user’s request
-How will your bot handle user’s query? API.AI manages this with **intents**, which act as a mapping between what a user says and what action 
+###  Build Responses to User’s Request
+How will your bot handle the user’s query? API.AI manages this with **intents**, which act as a mapping between what a user says and what action 
 should be taken by your bot.
 
 Proceed by adding new intents to your bot.
@@ -255,26 +253,26 @@ var localStorage Data = {
 };
 ```
 
-###  Response for your business logic
+###  Response for your Business Logic
 
-You can include the following bussiness logic in the code above :
+You can include the following business logic in the code above :
 
 #####  Send Text
 
 ```
-SENDRESPOSNE.SendText(inputJSON, 'your_text_here', function() {
+SENDRESPONSE.SendText(inputJSON, 'your_text_here', function() {
 });
 ```
-#####  Send Genric Template
+#####  Send Generic Template
 
 ```
-SENDRESPOSNE.SendGenericTemplate(inputJSON, 'your_generic_template_here', function() {
+SENDRESPONSE.SendGenericTemplate(inputJSON, 'your_generic_template_here', function() {
 });
 ```
 
 #####  Send Typing Action
 
 ```
-SENDRESPOSNE.SendTypingAction(inputJSON, 'your_action_here', function() {
+SENDRESPONSE.SendTypingAction(inputJSON, 'your_action_here', function() {
 });
 ```
