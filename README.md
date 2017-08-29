@@ -5,7 +5,7 @@ with the bot users.
 
 ## Table of Contents
 
-  - [Set up the Bot](#setup-the-bot)
+  - [Set up the Bot](#set-up-the-bot)
     - [Prerequisites](#prerequisites)
     - [Bot Linking with the KTL Platform](#bot-linking-with-the-ktl-platform)
     - [The Facebook Requirements](#the-facebook-requirements)
