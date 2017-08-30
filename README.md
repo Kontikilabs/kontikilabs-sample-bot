@@ -56,7 +56,7 @@ Once you have cloned the sample project, you require the following 3 packages:
 For building and managing the bot content, start with creating an **organisation/account** on our user-friendly 
 [KTL platform](http://app.kontikilabs.com).
 
-In order to link the KTL platform with the bot, add the platform credentials i.e the *'username' and 'password'* to the 
+In order to link the KTL platform with the bot, add the platform credentials i.e the *'email' and 'password'* to the 
 [config.json](https://github.com/Kontikilabs/kontikilabs-sample-bot/blob/master/config.json) file.
 
 On successful login to the platform you will be redirected to a page which will allow you to **Add New Bot**. 
@@ -80,7 +80,7 @@ Your config.json file code will look like:
 },
 
 "platformCredentials": {
-   "username": "<platform_username>",
+   "email": "<platform_email>",
    "password": "<platform_password>",
    "organisationId": "<platform_organisation_Id>",
    "botId": "<platform_bot_Id>"

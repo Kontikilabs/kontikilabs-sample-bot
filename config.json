@@ -14,7 +14,7 @@
 		"bot": "demo-bot"
 	},
 	"platformCredentials": {
-		"username": "<platform_username>",
+		"email": "<platform_email>",
 		"password": "<platform_password>",
 		"organisationId": "<platform_organisation_Id>",
 		"botId": "<platform_bot_Id>"
